@@ -1,5 +1,7 @@
+const { browser } = require("protractor");
+
 class Collection {
-    constructor(selectorType, selector) {
+     constructor(selectorType, selector) {
         if (selectorType === 'css') {
             this.collection = element.all(by.css(selector));
         } else  if (selectorType === 'className') {
@@ -9,26 +11,24 @@ class Collection {
         }
     };
 
-    async getCount() {
-        return this.collection.count();
-    };
-
-    async getTexts() {
+    async getText() {
         const arrayOfCollectionTexts = await this.collection.getText();
-        logger.info(`Texts of collection's elements are [${arrayOfCollectionTexts}]`);
+       // logger.info(`Texts of collection's elements are [${arrayOfCollectionTexts}]`);
         return arrayOfCollectionTexts;
+        
     };
     async clickElementByText(textToClick) {
-        console.log(this.collection);
-        const arrayOfElementTexts = await this.collection.getText();
-        console.log(arrayOfElementTexts);
-        const elementToClickIndex = arrayOfElementTexts.indexOf(textToClick);
+        const arrayOfElementTexts = await this.collection;
+        let arrayOfTexts = [];
+        for (let i = 0; i < arrayOfElementTexts.length; i++ ) {
+            arrayOfTexts.push(await arrayOfElementTexts[i].getText());
+        }
+        const elementToClickIndex = arrayOfTexts.indexOf(textToClick);
         if (elementToClickIndex === -1) {
             throw new Error(`No element with [${textToClick}] text found!`);
         }
-        logger.info(`Clicking "${textToClick}" text in "${this.elementName}"`);
-        return this.collection.get(elementToClickIndex).click();
+        // logger.info(`Clicking "${textToClick}" text in "${this.elementName}"`);
+        await this.collection.get(elementToClickIndex).click();
     };
-
 }
 module.exports = Collection;

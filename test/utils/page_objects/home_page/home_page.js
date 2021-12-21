@@ -6,13 +6,22 @@ class HomePage extends BasePage {
         super();
         this.url = 'https://www.dsw.com/en/us/';
         this.headerNavigationList = new Collection('className', 'header-navigation-list__component ng-tns-c129-2 ng-star-inserted');
-        this.expandedHeaderNavigationList = new Collection ('css', '.component-flyout');
-        
+        this.expandedHeaderNavigationList = new Collection('className', 'header-link-group__links__link ng-tns-c126-4 ng-star-inserted');
     };
+
     async open() {
-        return super.open (this.url);
+        await super.open(this.url);
+    }
+
+    async wait(waitInMillseconds) {
+        return super.wait(waitInMillseconds);
     }
     
+    async getTitle(element) {
+        // logger.info(`Title is verified`);
+        const homeTitle = await super.getTitle();
+        return homeTitle;
+     }
 };
 
 module.exports = HomePage;

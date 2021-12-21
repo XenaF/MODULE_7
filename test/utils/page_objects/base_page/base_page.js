@@ -12,8 +12,15 @@ class BasePage {
 
     async open(url) {
         // logger.info(`Opening "${url}" url`);
-        return browser.get(url);
+        await browser.get(url);
+        await browser.sleep(10000);
     };
+
+    async getTitle(element) {
+        // logger.info(`Title is verified`);
+        const currentTitle = await element.getTitle();
+        return currentTitle;
+     }
 };
 
 module.exports = BasePage;

@@ -1,26 +1,19 @@
 const Collection = require('../base_elements/base_collection');
-const Element = require('../base_elements/base_element');
 
-
-class Filter {
+class Filter extends Collection {
     constructor() {
-        this.sizeFilter = new Collection('css', '[for="exposed-filter-size-input"]');
-        this.colorFilter = new Collection('css', '[for="exposed-filter-color-input"]');
-        this.sizeOfThree = new Element ('css', '.select-box > button:nth-of-type(2)');
-        this.colorBlack = new Element ('css', '[for="filter-0"] span:nth-of-type(2)');
+        super();
+        this.filterSizeValues = new Collection('className', 'select-box__option ng-star-inserted');
+        this.filterColorMenu = new Collection('className', 'dsw-accordion__label'); 
+        this.filterColorValues = new Collection('className', 'exposed-filter__checkbox__label');
+        this.filterResult = new Collection('className', 'active-filters__filter ng-star-inserted');
     };
-
-    clickToSelectSize(){
-        // logger.info(`Click to select size`);
-        return this.sizeFilter.click();
-    };
-
-    clickToSelectColor(){
-        // logger.info(`Click to select size`);
-        return this.sizeFilter.click();
-    };
-
     
+    async getText() {
+       // logger.info(`Texts of collection's elements are [${arrayOfCollectionTexts}]`);
+        let filterText = await super.getText();
+        return filterText;
 }
 
+}
 module.exports = Filter;

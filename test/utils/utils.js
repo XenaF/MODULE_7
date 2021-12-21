@@ -1,12 +1,16 @@
 const { browser } = require("protractor");
 
-async function scrollToElement(element) {
-  await browser.controlFlow().execute(async () => {
-      await browser.executeScript('arguments[0].scrollIntoView(true)', element);
-  })
-  await browser.sleep(1000);
-}
+// async function waitForElement(element, waitTimeoutMilliseconds){
+//   return browser.wait(function() { 
+//     return element.isPresent(); 
+//   }, waitTimeoutMilliseconds)
+//   .then(function() {
+//      return browser.wait(function() { 
+//        return element.isDisplayed(); 
+//       }, waitTimeoutMilliseconds);
+//   });
+// }
 
-module.exports = {
-  scrollToElement
-}
+// module.exports = {
+//   waitForElement
+// }
