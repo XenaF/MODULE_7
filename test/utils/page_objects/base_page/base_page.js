@@ -18,8 +18,18 @@ class BasePage {
 
     async getTitle(element) {
         // logger.info(`Title is verified`);
+        var EC = protractor.ExpectedConditions;
+        browser.wait(EC.visibilityOf(element), 5000);
         const currentTitle = await element.getTitle();
-        return currentTitle;
+        return currentTitle.getTitle();
+        // try {
+        //     const currentTitle = await element.getTitle();
+        //     return currentTitle.getTitle();
+        // }
+        // catch(StaleElementReferenceError) {
+        //     const currentTitle = await element.getTitle();
+        //     return currentTitle.getTitle();
+        // }
      }
 };
 

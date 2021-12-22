@@ -28,7 +28,13 @@ class Collection {
             throw new Error(`No element with [${textToClick}] text found!`);
         }
         // logger.info(`Clicking "${textToClick}" text in "${this.elementName}"`);
-        await this.collection.get(elementToClickIndex).click();
-    };
+        try {
+            await this.collection.get(elementToClickIndex).click();
+        }
+        catch(StaleElementReferenceError) {
+            await this.collection.get(elementToClickIndex).click();
+        }
+        
+    }
 }
 module.exports = Collection;

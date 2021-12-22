@@ -10,11 +10,8 @@ const BagPage = require('../utils/page_objects/home_page/bag_page');
         let homePage = new HomePage();
         await homePage.open();
         await homePage.headerNavigationList.clickElementByText('Women');
-        await homePage.wait(10000);
         await homePage.expandedHeaderNavigationList.clickElementByText('All Women\'s Boots');
-        await homePage.wait(10000);
         let allWomenBootsPage = new AllWomenBootsPage();
-        await homePage.wait(10000);
         expect(allWomenBootsPage.getTitle(allWomenBootsPage.pageTitle)).toEqual('ALL WOMEN\'S BOOTS');
     });
 
@@ -25,9 +22,7 @@ const BagPage = require('../utils/page_objects/home_page/bag_page');
         await filter.filterSizeValues.clickElementByText('3');
         await allWomenBootsPage.wait(10000);
         await filter.filterColorMenu.clickElementByText('COLOR');
-        await allWomenBootsPage.wait(10000);
-        await filter.filterColorValues.clickElementByText('Black (2)');
-        await allWomenBootsPage.wait(10000);
+        await filter.filterColorValues.clickElementByText('Black');;
         let filterResult = new Filter();
         expect(filterResult.getText()).toEqual('Black', '3');
     });
@@ -45,19 +40,16 @@ const BagPage = require('../utils/page_objects/home_page/bag_page');
         await allWomenBootsPage.wait(10000);
         let bagPage = new BagPage();
         expect(bagPage.getTitle(bagPage.bagPageTitle)).toEqual('MY BAG');
-        await allWomenBootsPage.wait(10000);
         expect(bagPage.productDetails.isDisplayed()).toBeTruthy();
         });
 
-    it('Paypal non-Angular action', async function() {
-        let bagPage = new BagPage();
-        await bagPage.wait(10000); 
-        await bagPage.payPalButton.click();
-        await bagPage.wait(10000); 
-        await bagPage.payPalButton.clickByLinkText('Cancel and return to DSW');
-        await bagPage.wait(10000); 
-        expect(bagPage.getTitle(bagPage.bagPageTitle)).toEqual('MY BAG');
-    });
+ it('Paypal non-Angular action', async function() {
+    let bagPage = new BagPage();
+    await bagPage.payPalButton.click();
+    await bagPage.wait(10000); 
+    await bagPage.payPalButton.clickByLinkText('Cancel and return to DSW');
+    expect(bagPage.getTitle(bagPage.bagPageTitle)).toEqual('MY BAG');
+});
  });
 
  

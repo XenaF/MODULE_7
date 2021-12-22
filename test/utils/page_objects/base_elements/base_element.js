@@ -12,6 +12,8 @@ class Element {
     };
 
     async click() {
+        var EC = protractor.ExpectedConditions;
+        browser.wait(EC.elementToBeClickable(this.element), 5000);
         await this.element.click();
     };
 
@@ -29,7 +31,7 @@ class Element {
     };
 
     async clickByButtonText(element) {
-       let resultingButton = await browser.element(by.buttonText(element));
+        let resultingButton = await browser.element(by.buttonText(element));
         return resultingButton.click();
     }
 

@@ -5,7 +5,7 @@ class Filter extends Collection {
         super();
         this.filterSizeValues = new Collection('className', 'select-box__option ng-star-inserted');
         this.filterColorMenu = new Collection('className', 'dsw-accordion__label'); 
-        this.filterColorValues = new Collection('className', 'exposed-filter__checkbox__label');
+        this.filterColorValues = new Collection('xpath', '//div[@class="exposed-filter__checkbox__label"]/span[text()="Black"]');
         this.filterResult = new Collection('className', 'active-filters__filter ng-star-inserted');
     };
     
