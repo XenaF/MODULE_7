@@ -23,7 +23,7 @@ class Element {
     };
 
     async scrollToElement(element) {
-        var scrolldown = await $$(element).get(1);
+        var scrolldown = await $$(element).get(0);
         await browser.controlFlow().execute(function() {
         browser.executeScript('arguments[0].scrollIntoView(true)', scrolldown.getWebElement());
       });
