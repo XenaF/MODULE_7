@@ -1,33 +1,33 @@
-//var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
-const {SpecReporter} = require ("jasmine-spec-reporter");
+const { SpecReporter } = require("jasmine-spec-reporter");
 exports.config = {
   directConnect: true,
   capabilities: {
     'browserName': 'chrome'
   },
   framework: 'jasmine',
-  specs: ['../specs/shoesCatalog.js'],
+  specs: ['../specs/shoes.catalog.spec.js'],
   jasmineNodeOpts: {
     defaultTimeoutInterval: 100000,
-    print: function () {},
+    // eslint-disable-next-line object-shorthand
+    print: function () { },
   },
 
-  onPrepare: async function() {
+  onPrepare: async () => {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
     jasmine.getEnv().addReporter(
       new SpecReporter({
         suite: {
-          displayNumber: true, 
+          displayNumber: true,
         },
         spec: {
-          displayPending: true, 
-          displayDuration: true, 
+          displayPending: true,
+          displayDuration: true,
         },
         summary: {
-          displaySuccesses: false, 
-          displayFailed: false,   
-          displayPending: false,  
+          displaySuccesses: false,
+          displayFailed: false,
+          displayPending: false,
         },
       })
     );

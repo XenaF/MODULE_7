@@ -4,7 +4,9 @@
   "description": "Page object for Selenium project",
   "main": "index.js",
   "scripts": {
-    "test": "protractor test/config/conf"
+    "test": "protractor test/config/conf",
+    "webdriver-manager-update": "webdriver-manager update",
+    "webdriver-manager-start": "webdriver-manager start"
   },
   "repository": {
     "type": "git",
@@ -21,9 +23,13 @@
   },
   "devDependencies": {
     "chai": "^4.3.4",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
     "jasmine": "^3.10.0",
     "jasmine-spec-reporter": "^7.0.0",
     "mocha": "^9.1.3",
+    "prettier": "^2.5.1",
     "protractor": "^7.0.0",
     "protractor-jasmine2-html-reporter": "0.0.7",
     "webdriver-manager": "^12.1.8",
