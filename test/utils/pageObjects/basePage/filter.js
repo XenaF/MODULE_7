@@ -1,4 +1,4 @@
-const Collection = require('../base_elements/base_collection');
+const Collection = require('../baseElements/baseCollection');
 
 class Filter extends Collection {
     constructor() {
@@ -10,7 +10,6 @@ class Filter extends Collection {
     };
     
     async getText() {
-       // logger.info(`Texts of collection's elements are [${arrayOfCollectionTexts}]`);
         let filterText = await super.getText();
         return filterText;
 }

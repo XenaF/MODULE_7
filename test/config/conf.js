@@ -1,4 +1,3 @@
-//var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 const {SpecReporter} = require ("jasmine-spec-reporter");
 exports.config = {
   directConnect: true,

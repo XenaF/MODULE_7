@@ -1,5 +1,5 @@
-const BasePage = require('../base_page/base_page');
-const Element = require('../base_elements/base_element');
+const BasePage = require('../basePage/basePage');
+const Element = require('../baseElements/baseElement');
 
 class BagPage extends BasePage {
     constructor() {
@@ -10,7 +10,6 @@ class BagPage extends BasePage {
     };
 
     async getTitle(element) {
-        // logger.info(`Title is verified`);
         const pageTitle = await super.getTitle();
         return pageTitle;
      }   

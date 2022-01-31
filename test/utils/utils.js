@@ -1,16 +1,30 @@
-const { browser } = require("protractor");
+const { browser, $$, by } = require("protractor");
 
-// async function waitForElement(element, waitTimeoutMilliseconds){
-//   return browser.wait(function() { 
-//     return element.isPresent(); 
-//   }, waitTimeoutMilliseconds)
-//   .then(function() {
-//      return browser.wait(function() { 
-//        return element.isDisplayed(); 
-//       }, waitTimeoutMilliseconds);
-//   });
-// }
+async function scrollToElement(selector) {
+    var scrolldown = await $$(selector).get(0);
+    await browser.controlFlow().execute(function() {
+    browser.executeScript('arguments[0].scrollIntoView(true)', scrolldown.getWebElement());
+  });
+  await browser.sleep(10000);
+}
 
-// module.exports = {
-//   waitForElement
-// }
+async function clickByLinkText(text) {
+    let resultingLink = await browser.element(by.linkText(text));
+     await resultingLink.click();
+ }
+
+ async function clickByButtonText(text) {
+    let resultingButton = await browser.element(by.buttonText(text));
+    return resultingButton.click();
+}
+
+async function wait(waitInMillseconds) {
+    return browser.sleep(waitInMillseconds);
+}
+
+module.exports = {
+  scrollToElement,
+  clickByLinkText,
+  clickByButtonText,
+  wait
+}

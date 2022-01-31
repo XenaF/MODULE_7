@@ -1,8 +1,8 @@
-const HomePage = require("./home_page");
-const Element = require('../base_elements/base_element');
+const BasePage = require("../basePage/basePage");
+const Element = require('../baseElements/baseElement');
 
 
-class AllWomenBootsPage extends HomePage {
+class AllWomenBootsPage extends BasePage {
     constructor() {
         super();
         this.pageTitle = new Element ('className', 'title5 result-list__toolbar__left__header hide-mobile-down');
