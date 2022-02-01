@@ -17,12 +17,8 @@ class HomePage extends BasePage {
         return super.wait(waitInMillseconds);
     }
     
-<<<<<<< Updated upstream:test/utils/page_objects/home_page/home_page.js
     async getTitle(element) {
         // logger.info(`Title is verified`);
-=======
-    async getTitle() {
->>>>>>> Stashed changes:test/utils/pageObjects/homePage/homePage.js
         const homeTitle = await super.getTitle();
         return homeTitle;
      }

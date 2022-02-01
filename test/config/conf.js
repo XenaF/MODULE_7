@@ -6,9 +6,9 @@ exports.config = {
     'browserName': 'chrome'
   },
   framework: 'jasmine',
-  specs: ['../specs/shoes.catalog.spec.js'],
+  specs: ['../specs/shoesCatalog.js'],
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 200000,
+    defaultTimeoutInterval: 100000,
     print: function () {},
   },
 

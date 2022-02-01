@@ -1,29 +1,25 @@
-const { browser, element, by } = require("protractor");
-const { wait } = require("../../utils");
+const { browser } = require("protractor");
 
 class Element {
-
-    constructor(selectorType, selector) {
-        switch (selectorType) {
-           case 'css': this.element = element(by.css(selector));
-            break;
-           case 'className': this.element = element(by.className(selector));
-             break;
-           default: this.element = element(by.xpath(selector));
+    constructor (selectorType, selector) {
+        if (selectorType === 'css') {
+            this.element = element(by.css(selector));
+        } else if (selectorType === 'className') {
+            this.element = element(by.className(selector));
+        } else {
+           this.element = element(by.xpath(selector));
         }
-    }
+    };
 
     async click() {
-        await wait(5000);
         var EC = protractor.ExpectedConditions;
         browser.wait(EC.elementToBeClickable(this.element), 5000);
         await this.element.click();
     };
 
     async getText() {
-        await wait(5000);
-        return this.element.getText();
-        
+        const textElement = await this.element.getText();
+        return textElement;
     };
 
     async scrollToElement(element) {
