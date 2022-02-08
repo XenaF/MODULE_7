@@ -1,4 +1,3 @@
-//var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 const {SpecReporter} = require ("jasmine-spec-reporter");
 exports.config = {
   directConnect: true,
@@ -6,9 +5,9 @@ exports.config = {
     'browserName': 'chrome'
   },
   framework: 'jasmine',
-  specs: ['../specs/shoesCatalog.js'],
+  specs: ['../specs/shoes.catalog.spec.js'],
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 100000,
+    defaultTimeoutInterval: 200000,
     print: function () {},
   },
 
